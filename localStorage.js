@@ -20,17 +20,12 @@ const removeName = () => {
   }
 };
 
-const contP = document.getElementById("contatore");
+let cont = document.getElementById("contatore");
+let increase = parseInt(sessionStorage.getItem("lastVal")) || 0;
 
-const contatore = sessionStorage.getItem("contatore");
-if (!contatore) {
-  contatore = 0;
-}
-
-setInterval(() => {
-  contatore++;
-  contP.textContent = contatore;
-  sessionStorage.setItem("contatore", contatore);
+setInterval(function () {
+  cont.innerHTML = increase++;
+  sessionStorage.setItem("lastVal", increase);
 }, 1000);
 
 //da settare la session storage
